@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 07:54:54 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/23 11:40:17 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/26 12:25:17 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	print_signed_number(int nb)
 {
-	int count = 0;
+	int	count;
 
+	count = 0;
 	if (nb == -2147483648)
 		return (write(1, "-2147483648", 11));
-
 	if (nb < 0)
 	{
 		if (write(1, "-", 1) == -1)
@@ -32,9 +32,9 @@ int	print_signed_number(int nb)
 
 int	ft_printf(const char *format, ...)
 {
-	va_list ap;
+	va_list	ap;
 	int		count;
-	int 	return_value;
+	int		return_value;
 
 	va_start(ap, format);
 	count = 0;
@@ -49,9 +49,12 @@ int	ft_printf(const char *format, ...)
 			count += return_value;
 		}
 		else
-			count += write(1, format, 1);
-	format++;
+		{
+			if (write(1, format, 1) == -1)
+				return (-1);
+			count++;
+		}
+		format++;
 	}
-	va_end(ap);
-	return(count);
+	return (va_end (ap), count);
 }
