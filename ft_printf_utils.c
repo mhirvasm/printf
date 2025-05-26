@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 12:14:41 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/26 12:23:33 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/26 13:55:10 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,6 @@ int	print_format(char fspecifier, va_list ap)
 	else if (fspecifier == 'X')
 		count += print_number_base(va_arg(ap, unsigned int), 16, 1);
 	else
-	{
-		write(1, "%", 1);
-		count += write(1, &fspecifier, 1);
-	}
+		count += print_invalid_format(fspecifier);
 	return (count);
 }

@@ -6,11 +6,20 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 07:54:54 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/26 12:25:17 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/05/26 13:59:24 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	print_invalid_format(char fspecifier)
+{
+	if (write(1, "%", 1) == -1)
+		return (-1);
+	if (write(1, &fspecifier, 1) == -1)
+		return (-1);
+	return (2);
+}
 
 int	print_signed_number(int nb)
 {
