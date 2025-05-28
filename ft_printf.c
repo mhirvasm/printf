@@ -52,13 +52,13 @@ int	parse_format(const char *format, va_list ap)
 			format++;
 			return_value = print_format(*format, ap);
 			if (return_value == -1)
-				return (va_end (ap), (-1));
+				return (-1);
 			count += return_value;
 		}
 		else
 		{
 			if (write(1, format, 1) == -1)
-				return (va_end (ap), (-1));
+				return (-1);
 			count++;
 		}
 		format++;
