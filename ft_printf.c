@@ -6,7 +6,7 @@
 /*   By: mhirvasm <mhirvasm@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 07:54:54 by mhirvasm          #+#    #+#             */
-/*   Updated: 2025/05/27 17:01:46 by mhirvasm         ###   ########.fr       */
+/*   Updated: 2025/06/03 11:04:48 by mhirvasm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	count = 0;
 	count = parse_format(format, ap);
-	return (va_end (ap), count);
+	va_end (ap);
+	return (count);
 }
